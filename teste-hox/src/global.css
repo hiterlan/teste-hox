@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+button {
+  transition-duration: 200ms;
+}
+
+.body {
+  padding: 0px;
+  margin: 0px;
+}
+
+.forms input[type="text"] {
+  background-color: transparent;
+  color: black;
+  border: 0px;
+  border-bottom: 1px solid black;
+  width: 75%;
+  outline: none;
+}
+
+.card input[type="text"] {
+  background-color: transparent;
+  color: black;
+  border: 0px;
+  border-bottom: 1px solid black;
+  outline: none;
+}
+
+.card input[type="date"] {
+  background-color: transparent;
+  color: black;
+  border: 0px;
+  border-bottom: 1px solid black;
+  outline: none;
+}
+
+.card input[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+.card input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.card input[type="date"]:focus {
+  border-bottom: 1px solid #d13429;
+}
+
+.card input[type="text"]:focus {
+  border-bottom: 1px solid #d13429;
+}
+
+.forms input[type="text"]:focus {
+  border-bottom: 1px solid #d13429;
+}
+
+input[type="checkbox"]:checked {
+  background-image: url("./images-icons/check.png");
+}
+
+.navbar button {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+}
+
+.navbar select,
+.slideover select {
+  background-image: url("./images-icons/arrow-down.png");
+}
+
+input[type="radio"] {
+  background-image: url("./images-icons/esphere.png");
+  background-size: 70%;
+}
