@@ -17,7 +17,7 @@ Criar uma conexão no Mysql de acordo com o .env.example e renomeá-la para ".en
  Criar usários no prisma
 </h4>
 <code>
-  npx prisma migrate dev --name product_table_init
+ npx prisma migrate deploy
 </code>
 <br />
 O comando abaixo já deve ter sido executado automaticamente junto com o acima, mas caso não... 
