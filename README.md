@@ -38,5 +38,12 @@ npm run dev
   <code>
 npm run start
 </code>
+<br /> 
+<br />
+<h4>
+ Credenciais
+ </h4>
+email: teste@hox.com
+senha: testehox123
 
 OBS: a barra de pesquisa funciona onSubmit
