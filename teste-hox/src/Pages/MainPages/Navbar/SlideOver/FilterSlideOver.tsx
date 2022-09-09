@@ -10,7 +10,7 @@ import {
   includesPerishables,
   firstSmaller,
   setFirst,
-  setIncludePerishables,
+  setincludeNotPerishables,
 } from "../../../../store/productsSlice";
 import { OrderProductsOption } from "../../../../store/types";
 import {
@@ -25,7 +25,7 @@ export function SlideOver() {
   const includesPerishablesState = useSelector(includesPerishables);
 
   const [orderType, setOrderType] = useState<OrderProductsOption>("byName");
-  const [includePerishablesSet, setIncludesPerishables] = useState(
+  const [includeNotPerishablesSet, setIncludesPerishables] = useState(
     includesPerishablesState
   );
   const [firstSmallerSet, setFirstSmaller] = useState(firstSmallerState);
@@ -47,8 +47,8 @@ export function SlideOver() {
     if (firstSmallerSet !== firstSmallerState) {
       dispatch(setFirst());
     }
-    if (includePerishablesSet !== includesPerishablesState) {
-      dispatch(setIncludePerishables());
+    if (includeNotPerishablesSet !== includesPerishablesState) {
+      dispatch(setincludeNotPerishables());
     }
     dispatch(setProductsPerPage());
     setFiltering();
@@ -113,12 +113,12 @@ export function SlideOver() {
                     <div className="relative mt-6 flex-1 px-4 sm:px-6">
                       <div className="absolute inset-0 px-4 sm:px-6 slideover flex flex-col">
                         <select
-                          defaultValue={"ByName"}
                           onChange={(e) =>
                             setOrderType(e.target.value as OrderProductsOption)
                           }
                           className="mx-auto border-0 bg-no-repeat bg-1 bg-right-midz rounded-md px-2 pr-4 w-48 py-0 drop-shadow-md appearance-none h-8 focus:ring-1 focus:ring-[#D13429] focus:border-[#D13429] focus:outline-none"
                         >
+                          <option> --- </option>
                           <option value="byName">Nome</option>
                           <option value="byPrice">Preço</option>
                           <option value="byDateFabric">
@@ -153,10 +153,10 @@ export function SlideOver() {
                           </label>
                         </div>
                         <label className="mx-auto w-48 my-2 flex justify-between">
-                          Incluir Perecíveis
+                          Incluir não Perecíveis
                           <input
                             onChange={() =>
-                              setIncludesPerishables(!includePerishablesSet)
+                              setIncludesPerishables(!includeNotPerishablesSet)
                             }
                             defaultChecked={includesPerishablesState}
                             className="appearance-none rounded-md h-5 w-5 border border-gray-300 bg-white checked:bg-[#D13429] checked:border-[#D13429] focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-1 float-left mr-2 cursor-pointer focus:ring-2 focus:ring-offset-2 outline-none focus:ring-[#F13429]"

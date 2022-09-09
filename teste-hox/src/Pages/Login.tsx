@@ -8,12 +8,14 @@ export function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorLogin, setErrorLogin] = useState(false);
 
   async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const token = await verifyLogin({ email, password });
 
     if (!token) {
+      setErrorLogin(false);
       setEmail("");
       setPassword("");
       return;
@@ -33,13 +35,13 @@ export function Login() {
               className="my-4"
               type="text"
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="teste@hox.com"
+              placeholder="Digite o email"
             />
             <input
               className="my-4"
-              type="text"
+              type="password"
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="testehox123"
+              placeholder="Digite a senha"
             />
             <br />
             <button
@@ -60,7 +62,13 @@ export function Login() {
                 />
                 Lembre de mim
               </label>
-
+              {errorLogin ? (
+                <small className="flex justify-center text-sm text-red-600">
+                  Senha e/ou e-mail incorretos
+                </small>
+              ) : (
+                ""
+              )}
               <a
                 href=""
                 className="text-black focus:ring-2 focus:ring-[#D13429] h-5 focus:outline-none"

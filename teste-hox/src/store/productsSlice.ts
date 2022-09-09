@@ -14,7 +14,7 @@ const initialState: ProductSliceState = {
   products: [],
   order: (product: Product, product_: Product) => 0,
   firstSmaller: true,
-  includePerishables: true,
+  includeNotPerishables: true,
   pagenation: 1,
   productsPerPage: [],
   status: "",
@@ -52,7 +52,7 @@ const productsSlice = createSlice({
       state.products = state.products.sort(order);
     },
     setProductsPerPage(state) {
-      const productsPerPage = state.includePerishables
+      const productsPerPage = state.includeNotPerishables
         ? state.products.slice(
             (state.pagenation - 1) * limit,
             state.pagenation * limit
@@ -79,8 +79,8 @@ const productsSlice = createSlice({
         pagenation: action.payload,
       };
     },
-    setIncludePerishables(state) {
-      switch (state.includePerishables) {
+    setincludeNotPerishables(state) {
+      switch (state.includeNotPerishables) {
         case true: {
           return {
             ...state,
@@ -88,7 +88,7 @@ const productsSlice = createSlice({
               (state.pagenation - 1) * limit,
               state.pagenation * limit
             ),
-            includePerishables: !state.includePerishables,
+            includeNotPerishables: !state.includeNotPerishables,
           };
         }
         case false: {
@@ -97,7 +97,7 @@ const productsSlice = createSlice({
             productsPerPage: state.products
               .filter(checkPerishable)
               .slice((state.pagenation - 1) * limit, state.pagenation * limit),
-            includePerishables: !state.includePerishables,
+            includeNotPerishables: !state.includeNotPerishables,
           };
         }
       }
@@ -128,7 +128,7 @@ const productsSlice = createSlice({
         state.products = action.payload;
         state.products = state.products.sort(OrderProducts.byName);
 
-        state.productsPerPage = state.includePerishables
+        state.productsPerPage = state.includeNotPerishables
           ? state.products.slice(
               (state.pagenation - 1) * limit,
               state.pagenation * limit
@@ -145,7 +145,7 @@ export const productsPerPage = (state: SelectorProductsType) =>
 export const products = (state: SelectorProductsType) =>
   state.products.products;
 export const includesPerishables = (state: SelectorProductsType) =>
-  state.products.includePerishables;
+  state.products.includeNotPerishables;
 
 export const firstSmaller = (state: SelectorProductsType) =>
   state.products.firstSmaller;
@@ -154,7 +154,7 @@ export const {
   setProductsPerPage,
   setProductsOrder,
   setPagenation,
-  setIncludePerishables,
+  setincludeNotPerishables,
   setFirst,
   removeProduct,
   setProduct,
@@ -162,7 +162,7 @@ export const {
 } = productsSlice.actions;
 
 export const productsQt = (state: SelectorProductsType) =>
-  state.products.includePerishables
+  state.products.includeNotPerishables
     ? state.products.products.length
     : state.products.products.filter(checkPerishable).length;
 
