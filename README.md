@@ -25,13 +25,14 @@ O comando abaixo já deve ter sido executado automaticamente junto com o acima, 
 npx prisma db seed
 </code>
 <h3>
-Caso queira usar PostgreeSQL deve-se excluir as pasta migration e criá-las novamente após fazer as mudanças necessárias
+Caso queira usar PostgreeSQL
 </h3> 
 deve-se excluir as pasta migration e criá-las novamente após fazer as mudanças necessárias no arquivo do prisma e no .env
-<h3> <br />
+<br />
 <code> 
 npx prisma migrate dev --name product_table_init
 </ code>
+<h3> 
 Rodar Frontend
 </h3>
 <code>
