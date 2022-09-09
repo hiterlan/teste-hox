@@ -26,12 +26,15 @@ O comando abaixo já deve ter sido executado automaticamente junto com o acima, 
 npx prisma db seed
 </code>
 <h3>
-Rodar ambos...  Frontend/Api
+Rodar Frontend
 </h3>
 <code>
 npm run dev
   </code>
   <br />
+ <h3>
+ Rodar Backend
+ </h3>
   <code>
 npm run start
 </code>
