@@ -12,9 +12,8 @@ npm install
 <h3>
 Criar uma conexão no Mysql de acordo com o .env.example e renomeá-la para ".env"
 </h3>
-
 <h4>
- Criar usários no prisma
+ Executar as migrations
 </h4>
 <code>
  npx prisma migrate deploy
@@ -26,6 +25,13 @@ O comando abaixo já deve ter sido executado automaticamente junto com o acima, 
 npx prisma db seed
 </code>
 <h3>
+Caso queira usar PostgreeSQL deve-se excluir as pasta migration e criá-las novamente após fazer as mudanças necessárias
+</h3> 
+deve-se excluir as pasta migration e criá-las novamente após fazer as mudanças necessárias no arquivo do prisma e no .env
+<h3> <br />
+<code> 
+npx prisma migrate dev --name product_table_init
+</ code>
 Rodar Frontend
 </h3>
 <code>
