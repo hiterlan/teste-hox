@@ -75,7 +75,7 @@ const productsSlice = createSlice({
       return {
         ...state,
         firstSmaller: firstSmaller,
-        status: "Ordenando First",
+        status: "Ordenando FirstSmaller" + firstSmaller,
       };
     },
     setPagenation(state, action) {
