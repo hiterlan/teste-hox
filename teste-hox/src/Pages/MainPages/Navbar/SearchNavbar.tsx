@@ -2,15 +2,16 @@ import { CreateButton } from "./Buttons/CreateButton";
 import { ListButton } from "./Buttons/ListButton";
 import { SearchSettingsButton } from "./Buttons/SettingsSearchButton";
 import {
-  searchProduct,
+  searchingProduct,
   setProductsPerPage,
 } from "../../../store/productsSlice";
-import { useDispatch } from "react-redux";
-import PaginationSelect from "./PaginationSelect";
+import { searchProducts } from "../../../store/api";
+import { useAppDispatch } from "../../../store/hooks";
+import { PaginationSelect } from "./PaginationSelect";
 import { useState } from "react";
 
 export function SearchNavbar() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [search, setSearch] = useState("");
 
   const handleSearch = (
@@ -18,7 +19,8 @@ export function SearchNavbar() {
     search: string
   ) => {
     e.preventDefault();
-    dispatch(searchProduct(search));
+    dispatch(searchProducts(search));
+    dispatch(searchingProduct(search));
   };
 
   return (

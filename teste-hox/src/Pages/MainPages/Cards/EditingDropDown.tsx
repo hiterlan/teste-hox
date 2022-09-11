@@ -1,6 +1,5 @@
 import { updateProduct, getProducts } from "../../../store/api";
 import { useAppDispatch } from "../../../store/hooks";
-import { setProductsPerPage, setProduct } from "../../../store/productsSlice";
 import { schema } from "../../../utils/schema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -33,8 +32,6 @@ export function EditingDropDown(props: EditProps) {
 
   const submitForm = (data: any) => {
     data["id"] = props.id;
-    dispatch(setProduct(data));
-    dispatch(setProductsPerPage());
     dispatch(updateProduct(data));
   };
 

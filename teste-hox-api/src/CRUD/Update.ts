@@ -20,6 +20,7 @@ async function Update(
         dt_validity: dt_validity,
       },
     });
+    return res;
   } catch (err) {
     console.log(err);
   } finally {

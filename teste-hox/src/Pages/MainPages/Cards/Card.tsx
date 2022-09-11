@@ -50,8 +50,8 @@ export function Card(props: CardProps) {
           <span className="w-16 my-2 sm:my-0  flex justify-between">
             <button
               onClick={() => setIsEditing(!isEditing)}
-              className="w-6 h-6 bg-contain bg-no-repeat  bg-[url('./images-icons/pencil.png')]   bg-center 
-            focus:bg-[url('./images-icons/pencil-focus.png')] align-bottom outline-none
+              className="w-6 h-6 bg-contain bg-no-repeat  bg-[url('src/images-icons/pencil.png')]   bg-center 
+            focus:bg-[url('src/images-icons/pencil-focus.png')] align-bottom outline-none
             "
             />
             <DeleteButton id={props.id} />

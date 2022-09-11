@@ -6,11 +6,8 @@ import { filterIsTrue } from "../../../../store/pageSlice";
 
 import {
   setProductsOrder,
-  setProductsPerPage,
-  includesPerishables,
   firstSmaller,
   setFirst,
-  setincludeNotPerishables,
 } from "../../../../store/productsSlice";
 import { OrderProductsOption } from "../../../../store/types";
 import {
@@ -22,12 +19,9 @@ import { useDispatch, useSelector } from "react-redux";
 export function SlideOver() {
   const dispatch = useDispatch();
   const firstSmallerState = useSelector(firstSmaller);
-  const includesPerishablesState = useSelector(includesPerishables);
 
   const [orderType, setOrderType] = useState<OrderProductsOption>("byName");
-  const [includeNotPerishablesSet, setIncludesPerishables] = useState(
-    includesPerishablesState
-  );
+
   const [firstSmallerSet, setFirstSmaller] = useState(firstSmallerState);
 
   const setFiltering = () => {
@@ -47,10 +41,6 @@ export function SlideOver() {
     if (firstSmallerSet !== firstSmallerState) {
       dispatch(setFirst());
     }
-    if (includeNotPerishablesSet !== includesPerishablesState) {
-      dispatch(setincludeNotPerishables());
-    }
-    dispatch(setProductsPerPage());
     setFiltering();
   }
 
@@ -152,17 +142,6 @@ export function SlideOver() {
                             />
                           </label>
                         </div>
-                        <label className="mx-auto w-48 my-2 flex justify-between">
-                          Incluir não Perecíveis
-                          <input
-                            onChange={() =>
-                              setIncludesPerishables(!includeNotPerishablesSet)
-                            }
-                            defaultChecked={includesPerishablesState}
-                            className="appearance-none rounded-md h-5 w-5 border border-gray-300 bg-white checked:bg-[#D13429] checked:border-[#D13429] focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-1 float-left mr-2 cursor-pointer focus:ring-2 focus:ring-offset-2 outline-none focus:ring-[#F13429]"
-                            type="checkbox"
-                          />
-                        </label>
                         <button
                           onClick={() => handleOrder(orderType)}
                           className=" bg-[#F96C62]  bg-no-repeat bg-center focus:ring-2 focus:ring-offset-2 outline-none focus:ring-[#F13429] rounded-md block mx-auto p-3 text-white mt-16"

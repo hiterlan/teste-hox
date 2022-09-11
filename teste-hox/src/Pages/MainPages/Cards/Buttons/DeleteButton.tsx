@@ -1,9 +1,6 @@
 import { useAppDispatch } from "../../../../store/hooks";
 import { deleteProduct, getProducts } from "../../../../store/api";
-import {
-  removeProduct,
-  setProductsPerPage,
-} from "../../../../store/productsSlice";
+
 interface DeleteButtonProps {
   id: number;
 }
@@ -12,8 +9,6 @@ export function DeleteButton(props: DeleteButtonProps) {
   const dispatch = useAppDispatch();
 
   const deleteFunc = (data: any) => {
-    dispatch(removeProduct({ id: props.id }));
-    dispatch(setProductsPerPage());
     dispatch(deleteProduct(data));
   };
   return (

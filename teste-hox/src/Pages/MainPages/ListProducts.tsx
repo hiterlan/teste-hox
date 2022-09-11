@@ -1,19 +1,23 @@
 import { useDispatch } from "react-redux";
 import { Card } from "./Cards/Card";
 import { useEffect } from "react";
-import { productsPerPage } from "../../store/productsSlice";
-import { getProducts } from "../../store/api";
+import {
+  productsPerPage,
+  setProductsPerPage,
+  status,
+} from "../../store/productsSlice";
+import { setCards } from "../../store/api";
 import { useAppDispatch } from "../../store/hooks";
 import { useSelector } from "react-redux";
 
 export function ListProducts() {
   const cardProducts = useSelector(productsPerPage);
+  const statusChange = useSelector(status);
 
   const dispatch = useAppDispatch();
-
   useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+    dispatch(setCards());
+  }, [statusChange]);
 
   return (
     <>

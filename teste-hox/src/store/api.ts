@@ -1,17 +1,31 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ProductAttributes, MyData, MyKnownError, MyID } from "./types";
+import { createAsyncThunk, ThunkDispatch } from "@reduxjs/toolkit";
+import { setProductsPerPage } from "./productsSlice";
+import {
+  ProductAttributes,
+  MyKnownError,
+  MyID,
+  Product,
+  MyData,
+} from "./types";
+import { AppDispatch } from ".";
 
-export const getProducts = createAsyncThunk(
-  "products/read",
-  async (req, res) => {
-    return fetch("http://localhost:3001/api/products/show").then((res) =>
-      res.json()
-    );
-  }
-);
+export const getProducts = createAsyncThunk("products/read", async () => {
+  const res = await fetch("http://localhost:3001/api/products/show", {
+    method: "GET",
+    mode: "cors",
+  });
+  return res.json();
+});
+
+export const setCards = () => async (dispatch: AppDispatch) => {
+  await dispatch(getProducts());
+  return await dispatch(setProductsPerPage());
+};
+
+//use it like this
 
 export const createProduct = createAsyncThunk<
-  MyData,
+  Product,
   ProductAttributes,
   {
     rejectValue: MyKnownError;
@@ -26,22 +40,24 @@ export const createProduct = createAsyncThunk<
     mode: "cors",
     body: JSON.stringify({ name, price, dt_fabric, dt_validity }),
   });
-  return (await response.json()) as MyData;
+  return (await response.json()) as Product;
 });
 
 export const deleteProduct = createAsyncThunk<
   MyID,
-  MyData,
+  Product,
   {
     rejectValue: MyKnownError;
   }
 >("products/delete", async (id, thunkApi) => {
-  const response = await fetch(`http://localhost:3001/api/products/${id}`, {
-    method: "DELETE",
-    mode: "cors",
-    body: JSON.stringify(id),
-  });
-  return (await response.json()) as MyData;
+  const response: Response = await fetch(
+    `http://localhost:3001/api/products/${id}`,
+    {
+      method: "DELETE",
+      mode: "cors",
+    }
+  );
+  return (await response.json()) as Product;
 });
 
 export const updateProduct = createAsyncThunk<
@@ -64,6 +80,26 @@ export const updateProduct = createAsyncThunk<
       body: JSON.stringify({ name, price, dt_fabric, dt_validity }),
     }
   );
-
+  console.log(JSON.stringify({ name, price, dt_fabric, dt_validity }));
   return (await response.json()) as MyData;
+});
+
+export const searchProducts = createAsyncThunk<
+  Array<Product>,
+  String,
+  {
+    rejectValue: MyKnownError;
+  }
+>("products/search", async (name, thunkApi) => {
+  const response = await fetch(
+    `http://localhost:3001/api/products/search/${name}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+    }
+  );
+  return await response.json();
 });

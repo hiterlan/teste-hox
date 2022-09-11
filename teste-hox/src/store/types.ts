@@ -4,11 +4,11 @@ export interface SelectorPageType {
 
 export interface SelectorProductsType {
   products: {
-    includeNotPerishables: boolean;
     firstSmaller: boolean;
     products: Product[];
     state: string;
     productsPerPage: Product[];
+    status: string;
   };
 }
 
@@ -46,10 +46,10 @@ export type OrderProductsOption =
 export interface ProductSliceState {
   products: Product[];
   firstSmaller: boolean;
-  includeNotPerishables: boolean;
   order: OrderProductsFunction;
   productsPerPage: Product[];
   pagenation: number;
+  isSearching: boolean;
   status: string;
 }
 
