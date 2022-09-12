@@ -5,7 +5,7 @@ import {
   ProductSliceState,
   OrderProductsFunction,
 } from "./types";
-import { checkPerishable, OrderProducts } from "../utils/filterScripts";
+
 import {
   getProducts,
   searchProducts,
@@ -55,7 +55,7 @@ const productsSlice = createSlice({
     setProductsPerPage(state) {
       const pagenation =
         state.productsPerPage.length === 1 &&
-        state.status === "Produto Excluído"
+        state.status.includes("Produto Excluído")
           ? 1
           : state.pagenation;
 
@@ -75,7 +75,7 @@ const productsSlice = createSlice({
       return {
         ...state,
         firstSmaller: firstSmaller,
-        status: "Ordenando FirstSmaller" + firstSmaller,
+        status: "Ordenando FirstSmaller " + firstSmaller,
       };
     },
     setPagenation(state, action) {
@@ -97,7 +97,7 @@ const productsSlice = createSlice({
       state.status = "Produto Editado";
     });
     builder.addCase(deleteProduct.fulfilled, (state, action) => {
-      state.status = "Produto Excluído";
+      state.status = "Produto Excluído " + action.payload.id;
     });
   },
 });

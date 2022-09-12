@@ -9,6 +9,7 @@ export interface SelectorProductsType {
     state: string;
     productsPerPage: Product[];
     status: string;
+    pagenation: number;
   };
 }
 
@@ -41,7 +42,8 @@ export type OrderProductsOption =
   | "byName"
   | "byDateFabric"
   | "byDateValidity"
-  | "byPrice";
+  | "byPrice"
+  | "null";
 
 export interface ProductSliceState {
   products: Product[];

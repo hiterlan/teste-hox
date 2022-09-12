@@ -33,6 +33,9 @@ export const OrderProducts = {
     if (product.dt_validity > product_.dt_validity) return 1;
     return 0;
   },
+  null(product: Product, product_: Product) {
+    return 0;
+  },
 };
 
 export const OrderProductsDesc = {
@@ -55,6 +58,9 @@ export const OrderProductsDesc = {
     if (!product_.dt_validity) return -1;
     if (product.dt_validity < product_.dt_validity) return 1;
     if (product.dt_validity > product_.dt_validity) return -1;
+    return 0;
+  },
+  null(product: Product, product_: Product) {
     return 0;
   },
 };

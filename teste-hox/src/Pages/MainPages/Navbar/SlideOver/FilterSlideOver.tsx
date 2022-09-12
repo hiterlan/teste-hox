@@ -20,7 +20,7 @@ export function SlideOver() {
   const dispatch = useDispatch();
   const firstSmallerState = useSelector(firstSmaller);
 
-  const [orderType, setOrderType] = useState<OrderProductsOption>("byName");
+  const [orderType, setOrderType] = useState<OrderProductsOption>("null");
 
   const [firstSmallerSet, setFirstSmaller] = useState(firstSmallerState);
 

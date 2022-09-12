@@ -31,14 +31,13 @@ export const createProduct = createAsyncThunk<
     rejectValue: MyKnownError;
   }
 >("products/create", async (product, thunkApi) => {
-  const { name, price, dt_fabric, dt_validity } = product;
   const response = await fetch("http://localhost:3001/api/products/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     mode: "cors",
-    body: JSON.stringify({ name, price, dt_fabric, dt_validity }),
+    body: JSON.stringify(product),
   });
   return (await response.json()) as Product;
 });
@@ -67,20 +66,17 @@ export const updateProduct = createAsyncThunk<
     rejectValue: MyKnownError;
   }
 >("products/update", async (product, thunkApi) => {
-  const { name, price, dt_fabric, dt_validity, id } = product;
-
   const response = await fetch(
-    `http://localhost:3001/api/products/update/${id}`,
+    `http://localhost:3001/api/products/update/${product.id}`,
     {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       mode: "cors",
-      body: JSON.stringify({ name, price, dt_fabric, dt_validity }),
+      body: JSON.stringify(product),
     }
   );
-  console.log(JSON.stringify({ name, price, dt_fabric, dt_validity }));
   return (await response.json()) as MyData;
 });
 

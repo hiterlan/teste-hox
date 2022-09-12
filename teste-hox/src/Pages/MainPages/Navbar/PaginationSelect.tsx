@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { productsQt } from "../../../store/productsSlice";
 import { useDispatch } from "react-redux";
@@ -8,7 +7,6 @@ import {
 } from "../../../store/productsSlice";
 export function PaginationSelect() {
   const productsQtt = useSelector(productsQt);
-  const [select, setSelect] = useState(productsQtt);
   const dispatch = useDispatch();
 
   const handleSelectPagenation = (page: number) => {
