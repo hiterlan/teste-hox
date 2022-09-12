@@ -31,7 +31,7 @@ deve-se excluir as pasta migrations e criá-la novamente após fazer as mudança
 <br />
 <code> 
 npx prisma migrate dev --name product_table_init
-</ code>
+</code>
 < br />
 Em ambos os casos no final deve-se executar <br/>
 <code>
