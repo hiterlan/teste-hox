@@ -10,6 +10,7 @@ interface EditProps {
   price: number;
   dt_fabric: Date;
   dt_validity: Date;
+  setIsEditing: () => void;
 }
 
 export function EditingDropDown(props: EditProps) {
@@ -33,6 +34,7 @@ export function EditingDropDown(props: EditProps) {
   const submitForm = (data: any) => {
     data["id"] = props.id;
     dispatch(updateProduct(data));
+    props.setIsEditing();
   };
 
   return (

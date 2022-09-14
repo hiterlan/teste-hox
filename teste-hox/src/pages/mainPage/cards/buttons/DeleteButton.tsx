@@ -14,8 +14,8 @@ export function DeleteButton(props: DeleteButtonProps) {
   return (
     <button
       onDoubleClick={() => deleteFunc(props.id)}
-      className="w-6 h-6 bg-contain bg-no-repeat bg-[url('src/images-icons/trash-can.png')]   bg-center 
-  focus:bg-[url('src/images-icons/trash-focus.png')] align-bottom outline-none
+      className="w-6 h-6 bg-contain bg-no-repeat bg-[url('src/assets/trash-can.png')]   bg-center 
+  focus:bg-[url('src/assets/trash-focus.png')] align-bottom outline-none
   "
     />
   );

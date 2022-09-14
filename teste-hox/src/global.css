@@ -56,7 +56,7 @@ button {
 }
 
 input[type="checkbox"]:checked {
-  background-image: url("src/images-icons/check.png");
+  background-image: url("src/assets/check.png");
 }
 
 .navbar button {
@@ -67,10 +67,10 @@ input[type="checkbox"]:checked {
 
 .navbar select,
 .slideover select {
-  background-image: url("src/images-icons/arrow-down.png");
+  background-image: url("src/assets/arrow-down.png");
 }
 
 input[type="radio"] {
-  background-image: url("src/images-icons/esphere.png");
+  background-image: url("src/assets/esphere.png");
   background-size: 70%;
 }

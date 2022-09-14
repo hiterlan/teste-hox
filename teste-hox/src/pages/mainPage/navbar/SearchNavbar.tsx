@@ -1,10 +1,7 @@
 import { CreateButton } from "./Buttons/CreateButton";
 import { ListButton } from "./Buttons/ListButton";
 import { SearchSettingsButton } from "./Buttons/SettingsSearchButton";
-import {
-  searchingProduct,
-  setProductsPerPage,
-} from "../../../store/productsSlice";
+import { searchingProduct } from "../../../store/productsSlice";
 import { searchProducts } from "../../../store/api";
 import { useAppDispatch } from "../../../store/hooks";
 import { PaginationSelect } from "./PaginationSelect";

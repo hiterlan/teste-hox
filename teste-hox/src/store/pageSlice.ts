@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isFulfilled } from "@reduxjs/toolkit";
 import { SelectorPageType } from "./types";
+import { createProduct } from "./api";
 
 export const slice = createSlice({
   name: "page",
@@ -18,6 +19,11 @@ export const slice = createSlice({
     toFilter(state) {
       return { ...state, filter: !state.filter };
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(createProduct.fulfilled, (state) => {
+      return { ...state, list: true, create: false };
+    });
   },
 });
 export const { toList, toCreate, toFilter } = slice.actions;
