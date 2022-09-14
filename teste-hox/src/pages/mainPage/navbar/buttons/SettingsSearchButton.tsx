@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { toFilter } from "../../../../store/pageSlice";
-import { SlideOver } from "../SlideOver/FilterSlideOver";
+import { SlideOver } from "../slideOver/FilterSlideOver";
 
 export function SearchSettingsButton() {
   const dispatch = useDispatch();

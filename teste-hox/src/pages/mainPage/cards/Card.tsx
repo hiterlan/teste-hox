@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DeleteButton } from "./buttons/DeleteButton";
+import { EditButton } from "./buttons/EditButton";
 import { EditingDropDown } from "./EditingDropDown";
 
 interface CardProps {
@@ -14,7 +15,7 @@ interface CardProps {
 
 export function Card(props: CardProps) {
   const [isEditing, setIsEditing] = useState(false);
-  const handleIsEditing = () => setIsEditing(false);
+  const handleIsEditing = () => setIsEditing(!isEditing);
 
   const dateFabric = new Date(props.dt_fabric);
   dateFabric.setDate(dateFabric.getDate() + 1);
@@ -49,12 +50,7 @@ export function Card(props: CardProps) {
             {dateValidityToRender}
           </span>
           <span className="w-16 my-2 sm:my-0  flex justify-between">
-            <button
-              onClick={() => setIsEditing(!isEditing)}
-              className="w-6 h-6 bg-contain bg-no-repeat  bg-[url('src/assets/pencil.png')]   bg-center 
-            focus:bg-[url('src/assets/pencil-focus.png')] align-bottom outline-none
-            "
-            />
+            <EditButton setIsEditing={handleIsEditing} />
             <DeleteButton id={props.id} />
           </span>
         </div>
