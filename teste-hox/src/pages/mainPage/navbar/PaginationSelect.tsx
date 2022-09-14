@@ -5,6 +5,7 @@ import {
   setPagenation,
   setProductsPerPage,
 } from "../../../store/productsSlice";
+
 export function PaginationSelect() {
   const productsQtt = useSelector(productsQt);
   const dispatch = useDispatch();

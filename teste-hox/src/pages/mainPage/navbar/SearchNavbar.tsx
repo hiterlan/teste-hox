@@ -1,6 +1,6 @@
-import { CreateButton } from "./Buttons/CreateButton";
-import { ListButton } from "./Buttons/ListButton";
-import { SearchSettingsButton } from "./Buttons/SettingsSearchButton";
+import { CreateButton } from "./buttons/CreateButton";
+import { ListButton } from "./buttons/ListButton";
+import { SearchSettingsButton } from "./buttons/SettingsSearchButton";
 import { searchingProduct } from "../../../store/productsSlice";
 import { searchProducts } from "../../../store/api";
 import { useAppDispatch } from "../../../store/hooks";

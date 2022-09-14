@@ -1,5 +1,5 @@
 import { useAppDispatch } from "../../../../store/hooks";
-import { deleteProduct, getProducts } from "../../../../store/api";
+import { deleteProduct } from "../../../../store/api";
 
 interface DeleteButtonProps {
   id: number;

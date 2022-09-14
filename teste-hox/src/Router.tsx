@@ -1,8 +1,8 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { getToken } from "./Auth";
 
-import { Main } from "./Pages/MainPages/Main";
-import { Login } from "./Pages/Login";
+import { Main } from "./pages/mainPage/Main";
+import { Login } from "./pages/Login";
 
 interface PrivateRouteProps {
   children: any;

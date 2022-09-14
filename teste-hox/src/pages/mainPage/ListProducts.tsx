@@ -1,11 +1,6 @@
-import { useDispatch } from "react-redux";
-import { Card } from "./Cards/Card";
+import { Card } from "./cards/Card";
 import { useEffect } from "react";
-import {
-  productsPerPage,
-  setProductsPerPage,
-  status,
-} from "../../store/productsSlice";
+import { productsPerPage, status } from "../../store/productsSlice";
 import { setCards } from "../../store/api";
 import { useAppDispatch } from "../../store/hooks";
 import { useSelector } from "react-redux";

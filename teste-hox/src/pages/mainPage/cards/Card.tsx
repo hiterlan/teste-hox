@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DeleteButton } from "./Buttons/DeleteButton";
+import { DeleteButton } from "./buttons/DeleteButton";
 import { EditingDropDown } from "./EditingDropDown";
 
 interface CardProps {

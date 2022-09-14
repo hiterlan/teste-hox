@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { CreateProduct } from "./CreateProduct";
 import { createIsTrue } from "../../store/pageSlice";
-import { SearchNavbar } from "./Navbar/SearchNavbar";
+import { SearchNavbar } from "./navbar/SearchNavbar";
 import { ListProducts } from "./ListProducts";
 
 export function Main() {
