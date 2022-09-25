@@ -1,10 +1,10 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 
-import Create from "./src/CRUD/create";
-import Read from "./src/CRUD/read";
-import Update from "./src/CRUD/update";
-import Delete from "./src/CRUD/delete";
+import Create from "./src/crud/create";
+import Read from "./src/crud/read";
+import Update from "./src/crud/update";
+import Delete from "./src/crud/delete";
 
 import SearchProducts from "./src/searchProducts";
 
