@@ -3,6 +3,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { createProduct } from "../../store/api";
 import { schema } from "../../utils/schema";
 import { useAppDispatch } from "../../store/hooks";
+import { useEffect, useRef } from "react";
+import autoAnimate from "@formkit/auto-animate";
 
 export function CreateProduct() {
   const dispatch = useAppDispatch();
@@ -15,6 +17,13 @@ export function CreateProduct() {
   const submitForm = (data: any) => {
     dispatch(createProduct(data));
   };
+  const parent = useRef(null);
+
+  useEffect(() => {
+    parent.current &&
+      autoAnimate(parent.current, { easing: "ease-in", duration: 150 });
+    console.log("É o pijas");
+  }, [parent]);
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
@@ -26,7 +35,7 @@ export function CreateProduct() {
             placeholder="Nome"
             {...register("name")}
           />
-          <small className="ml-4 mb-3 text-red-600">
+          <small ref={parent} className="ml-4 mb-3 text-red-600">
             {errors.name && errors.name.message?.toString()}
           </small>
 
@@ -39,7 +48,7 @@ export function CreateProduct() {
               valueAsNumber: true,
             })}
           />
-          <small className="ml-4 text-red-600">
+          <small ref={parent} className="ml-4 text-red-600">
             {errors.price && errors.price.message?.toString()}
           </small>
         </div>
@@ -52,7 +61,7 @@ export function CreateProduct() {
               {...register("dt_fabric")}
             />
           </label>
-          <small className="mb-6 text-red-600">
+          <small ref={parent} className="mb-6 text-red-600">
             {errors.dt_fabric && errors.dt_fabric.message?.toString()}
           </small>
 
@@ -64,7 +73,7 @@ export function CreateProduct() {
               {...register("dt_validity")}
             />
           </label>
-          <small className="mb-6 text-red-600">
+          <small ref={parent} className="mb-6 text-red-600">
             {errors.dt_validity && errors.dt_validity.message?.toString()}
           </small>
         </div>

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import autoAnimate from "@formkit/auto-animate";
 import { DeleteButton } from "./buttons/DeleteButton";
 import { EditButton } from "./buttons/EditButton";
 import { EditingDropDown } from "./EditingDropDown";
@@ -16,6 +17,12 @@ interface CardProps {
 export function Card(props: CardProps) {
   const [isEditing, setIsEditing] = useState(false);
   const handleIsEditing = () => setIsEditing(!isEditing);
+  const parent = useRef(null);
+
+  useEffect(() => {
+    parent.current &&
+      autoAnimate(parent.current, { easing: "ease-in", duration: 200 });
+  }, [parent]);
 
   const dateFabric = new Date(props.dt_fabric);
   dateFabric.setDate(dateFabric.getDate() + 1);
@@ -32,7 +39,10 @@ export function Card(props: CardProps) {
 
   return (
     <>
-      <div className="w-100% p-8 flex flex-row sm:flex-col justify-between bg-[#FFE2E0] m-2 drop-shadow-md  hover:transition-all">
+      <div
+        ref={parent}
+        className="w-100% p-8 flex flex-row sm:flex-col justify-between bg-[#FFE2E0] m-2 drop-shadow-md  hover:transition-all"
+      >
         <div className="flex flex-col sm:flex-row justify-between">
           <span className="w-44 my-3 sm:my-0  center inline-block">
             {props.name}

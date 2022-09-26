@@ -1,13 +1,21 @@
 import { Card } from "./cards/Card";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { productsPerPage, status } from "../../store/productsSlice";
 import { setCards } from "../../store/api";
 import { useAppDispatch } from "../../store/hooks";
 import { useSelector } from "react-redux";
+import autoAnimate from "@formkit/auto-animate";
 
 export function ListProducts() {
   const cardProducts = useSelector(productsPerPage);
   const statusChange = useSelector(status);
+
+  const parent = useRef(null);
+
+  useEffect(() => {
+    parent.current &&
+      autoAnimate(parent.current, { easing: "ease-in", duration: 200 });
+  }, [parent]);
 
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -15,7 +23,7 @@ export function ListProducts() {
   }, [statusChange]);
 
   return (
-    <>
+    <div ref={parent}>
       {cardProducts.map((card) => {
         return (
           <Card
@@ -30,7 +38,7 @@ export function ListProducts() {
           />
         );
       })}
-    </>
+    </div>
   );
 }
 export default ListProducts;
